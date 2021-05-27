@@ -13,7 +13,7 @@ const handlePress = () => {
       <Text>Homepage!</Text>
       <Button
         title="Login"
-        onPress={() => handlePress}
+        onPress={handlePress}
         />
     </View>
   );

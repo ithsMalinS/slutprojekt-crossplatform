@@ -13,7 +13,7 @@ export default function Login(props) {
       <Text>Login!</Text>
       <Button
         title="Home"
-        onPress={() => handlePress}
+        onPress={handlePress}
       />
     </View>
   );
