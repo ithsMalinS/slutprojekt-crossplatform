@@ -28,7 +28,10 @@ export default function Menu(props) {
                     onPress={() => handlePress('Create task')}
                 >Create new task</Text>
                 </View>
-                <Pressable style={styles.button}> 
+                <Pressable 
+                    style={styles.button}
+                    onPress={() => handlePress('Login')}
+                > 
                 <Text style={styles.buttonText}>Sign Out</Text> 
                 </Pressable>
             </ImageBackground>
