@@ -9,6 +9,7 @@ import TaskDetails from '../screens/taskDetails';
 import Tasks from '../screens/tasks';
 
 
+
 const Stack = createStackNavigator()
 const MainStack = () => {
     return (
@@ -19,6 +20,10 @@ const MainStack = () => {
             <Stack.Screen name="Create task" component={CreateTask} />
             <Stack.Screen name="Task details" component={TaskDetails} />
             <Stack.Screen name="Tasks" component={Tasks} />
+            
+
+           
+
         </Stack.Navigator>
     )
 }

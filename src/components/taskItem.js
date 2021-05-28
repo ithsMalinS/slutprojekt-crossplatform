@@ -2,11 +2,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function TaskItem(props) {    
+export default function TaskItem(props) {   
+  
+  const handlePress = () => {
+    
+    props.navigation.navigate('Task details')
+}
 
   return (
     <View style={styles.container}>
-      <Text>Task item!</Text>
+      <Text onPress={handlePress}>Task item!</Text>
     </View>
   );
 }

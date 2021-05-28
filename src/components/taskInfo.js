@@ -1,12 +1,13 @@
-//import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function MenuBar(props) {    
+export default function TaskInfo(props) {    
 
   return (
     <View style={styles.container}>
-      <Text>Jag e en hamburgare!</Text>
+      <Text>Task info!</Text>
+      <Text>blabllbablablbabab blablba b abllbablbla balbal</Text>
     </View>
   );
 }

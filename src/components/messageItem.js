@@ -6,7 +6,8 @@ export default function MessageItem(props) {
 
   return (
     <View style={styles.container}>
-      <Text>Message item!</Text>
+      <Text>Message text</Text>
+      <Text>BLASBLDBLASDBLABLD BASDLB blbsdblabjsdlbj</Text>
     </View>
   );
 }
