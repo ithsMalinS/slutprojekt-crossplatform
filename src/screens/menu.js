@@ -66,14 +66,13 @@ const styles = StyleSheet.create({
         borderRadius: 20
     },
     buttonText: {
-        fontSize: 30,
+        fontSize: 20,
     },
     button: {
         backgroundColor: '#4e9ac7',
         color: 'white',
-        marginTop: 20,
-        padding: 10,
-        paddingHorizontal: 40,
+        padding: 5,
+        paddingHorizontal: 25,
         borderRadius: 20
     }
 });
