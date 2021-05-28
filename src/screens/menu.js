@@ -13,15 +13,17 @@ export default function Menu(props) {
     <View style={styles.container}>
       <Text>Menu!</Text>
       <Text
-        onPress={handlePress('Home')}
+        onPress={() => handlePress('Home')}
       >Home</Text>
       <Text
-        onPress={handlePress('Tasks')}
+        onPress={() => handlePress('Tasks')}
       >My tasks</Text>
       <Text
-        onPress={handlePress('Create task')}
+        onPress={() => handlePress('Create task')}
       >Create new task</Text>
-      <Button>Sign out</Button>
+      <Button
+        title="sign out"
+      />
     </View>
   );
 }
