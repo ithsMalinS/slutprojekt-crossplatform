@@ -12,7 +12,7 @@ import Tasks from '../screens/tasks';
 const Stack = createStackNavigator()
 const MainStack = () => {
     return (
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Menu">
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Menu" component={Menu} />
