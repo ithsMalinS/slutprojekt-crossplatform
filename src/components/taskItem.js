@@ -11,7 +11,8 @@ export default function TaskItem(props) {
 
   return (
     <View style={styles.container}>
-      <Text onPress={handlePress}>Task item!</Text>
+      <Text style={styles.taskId}>Task ID: {props.id}</Text>
+      <Text style={styles.description} onPress={handlePress}>{props.description}</Text>
     </View>
   );
 }
@@ -20,8 +21,30 @@ export default function TaskItem(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#C0C0C0',
+    color: 'white',
+    marginTop: 30,
+    padding: 10,
+    paddingHorizontal: 90,
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
+  taskId: {
+    fontSize: 20,
+    color: 'white'
+  },
+  description: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 30,
+  }
 });
