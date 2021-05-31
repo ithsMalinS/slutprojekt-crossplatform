@@ -32,9 +32,9 @@ export default function Tasks(props) {
     <View style={styles.container}>
       <Text style={styles.heading}>Your tasks</Text> 
       <FlatList
+        keyExtractor={item => item.id}
         data={DATA}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
       />
     </View>
   );
