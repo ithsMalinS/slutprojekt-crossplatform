@@ -1,17 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
-import Header from '../components/header'
+import { StyleSheet, Button, View } from 'react-native';
 
-export default function Home(props) {
-
- 
+export default function Header(props) {    
 
   return (
     <View style={styles.container}>
+      <Button
+        title = "Toggle" onPress={() => props.navigation.toggleDrawer()}   
+      />
 
-      <Header navigation={props.navigation}/>
-      <Text>Homepage!</Text>
-
+      
     </View>
   );
 }
