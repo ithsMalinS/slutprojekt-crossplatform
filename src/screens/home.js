@@ -8,8 +8,7 @@ export default function Home(props) {
 
   return (
     <View style={styles.container}>
-
-      <Header navigation={props.navigation}/>
+    <Header navigation={props.navigation}/>
       <Text>Homepage!</Text>
 
     </View>
@@ -20,8 +19,9 @@ export default function Home(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'peachpuff',
     alignItems: 'center',
-    justifyContent: 'center',
+    
+    
   },
 });

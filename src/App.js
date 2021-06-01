@@ -4,14 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 // import MainStack from './navigation/StackNavigator'
 import Drawer from './navigation/drawer'
-
+import {MyContextProvider} from '../src/storage/context'
 
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Drawer />
-    </NavigationContainer>
+    <MyContextProvider>
+      <NavigationContainer>
+        <Drawer />
+      </NavigationContainer>
+    </MyContextProvider>
   );
 }
 
