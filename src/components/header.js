@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import { StyleSheet, Button, View, Text } from 'react-native';
-import { MyContext } from '../storage/context'
 
 
 export default function Header(props) {    

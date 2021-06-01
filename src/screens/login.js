@@ -10,7 +10,7 @@ export default function Login(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Login!</Text>
-      <LoginForm/>
+      <LoginForm navigation={props.navigation} />
      
     </View>
   );
