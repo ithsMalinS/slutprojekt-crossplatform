@@ -6,20 +6,26 @@ import Menu from '../screens/menu';
 import CreateTask from '../screens/newTask';
 import TaskDetails from '../screens/taskDetails';
 import Tasks from '../screens/tasks';
-import Login from '../screens/login'
+
+import Login from '../screens/login';
+
 
 
 
 const Drawer = createDrawerNavigator()
 const MainDrawer = () => {
     return (
-        <Drawer.Navigator initialRouteName="Login">
+
+        <Drawer.Navigator initialRouteName='LogIn'>
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Menu" component={Menu} />
             <Drawer.Screen name="Create task" component={CreateTask} />
             <Drawer.Screen name="Task details" component={TaskDetails} />
             <Drawer.Screen name="Tasks" component={Tasks} />
+
             <Drawer.Screen name="Login" component={Login} />
+
+           
 
            
 

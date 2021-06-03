@@ -14,10 +14,10 @@ export default function TaskDetail(props) {
   return (
     <View style={styles.container}>
      
-      <Text>Task Detail!</Text>
+      {/* <Text>Task Detail!</Text>
       <TaskDone/>
       <TaskImage/>
-      <TaskInfo/>
+      <TaskInfo/> */}
       <Messages/>
     </View>
   );

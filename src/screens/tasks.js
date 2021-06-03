@@ -2,6 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import TaskItem from '../components/taskItem'
+import Button from '../components/button'
 
 const DATA = [
     {
@@ -20,16 +21,20 @@ const DATA = [
       imageFile: ''
     },
   ]
- 
-
-export default function Tasks(props) {    
-
+  
+  export default function Tasks(props) {    
+    
+     const handlePress = () => {
+        props.navigation.navigate('Create task')
+     }
+    
   const renderItem = ({ item }) => (
     <TaskItem navigation={props.navigation} id={item.id} description={item.description}/>
   )
 
   return (
     <View style={styles.container}>
+      <Button title='Create Task' onPress={handlePress} />
       <Text style={styles.heading}>Your tasks</Text> 
       <FlatList
         keyExtractor={item => item.id}
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     fontSize: 30,
-    backgroundColor: '#4e9ac7',
+    backgroundColor: 'orange',
     padding: 6,
     paddingHorizontal: 130,
     borderRadius: 5
