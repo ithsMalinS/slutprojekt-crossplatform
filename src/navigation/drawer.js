@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator()
 const MainDrawer = () => {
     return (
 
-        <Drawer.Navigator initialRouteName='LogIn'>
+        <Drawer.Navigator initialRouteName='Login'>
             <Drawer.Screen name="Home" component={Home} />
             <Drawer.Screen name="Menu" component={Menu} />
             <Drawer.Screen name="Create task" component={CreateTask} />

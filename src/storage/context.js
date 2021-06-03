@@ -19,6 +19,7 @@ const MyContextProvider = props => {
    const test = await API.login(username, password)
     setUser(username)
     console.log('storage' + test)
+    return test
   }
   
   return(
