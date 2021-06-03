@@ -1,22 +1,35 @@
 //import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput, Pressable, Keyboard } from 'react-native';
+
+import { MyContext } from '../storage/context'
+
+
 import LogStyle from '../style/styling'
 import Button from '../components/button'
 
+
 export default function LoginForm(props) {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('Tuffaste Admin')
+  const [password, setPassword] = useState('makrill')
 
+  const {logIn } = useContext(MyContext)
 
-
-  const signIn = () => {
+  const signIn = async () => {
     Keyboard.dismiss()
-    console.log(username)
-    console.log(password)
-    setUsername('')
-    setPassword('')
+    //console.log(username)
+    //console.log(password)
+    // setUsername('')
+    // setPassword('')
+    const auth = await logIn(username, password)
+    console.log('login'+ auth)
+
+    if(auth == 200){
+      props.navigation.navigate('Home')
+    }else{
+      console.log('du får inte')
+    }
   }
 
   return (
