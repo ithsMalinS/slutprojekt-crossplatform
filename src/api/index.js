@@ -11,6 +11,13 @@ export async function fetchTasks() {
   return tasks.tasks
 }
 
+export async function getMe() {
+  console.log(response.headers);
+  const me = await API.get("/me")
+  return me
+}
+
+
 export async function login(username, password) {
   try {
     
