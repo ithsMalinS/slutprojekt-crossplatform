@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputField: {
-    height: 130
+    height: 600
   }
 });

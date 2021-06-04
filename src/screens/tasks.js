@@ -37,7 +37,7 @@ const DATA = [
       <Button title='Create Task' onPress={handlePress} />
       <Text style={styles.heading}>Your tasks</Text> 
       <FlatList
-        keyExtractor={item => item.id}
+        keyExtractor={item => String(item.id)}
         data={DATA}
         renderItem={renderItem}
       />

@@ -1,6 +1,6 @@
 //import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, ScrollView, View, SafeAreaView} from 'react-native';
 
 import Messages from '../components/messages'
 import TaskInfo from '../components/taskInfo'
@@ -12,14 +12,16 @@ import TaskImage from '../components/taskImage'
 export default function TaskDetail(props) {    
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView styles={{height: 600}}>
      
       {/* <Text>Task Detail!</Text>
       <TaskDone/>
       <TaskImage/>
       <TaskInfo/> */}
       <Messages/>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
