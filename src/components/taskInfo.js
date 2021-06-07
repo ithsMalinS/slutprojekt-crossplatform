@@ -6,7 +6,7 @@ export default function TaskInfo(props) {
 
   return (
     <View style={styles.container}>
-      <Text>Task info!</Text>
+      <Text>{props.task.id}</Text>
       <Text>blabllbablablbabab blablba b abllbablbla balbal</Text>
     </View>
   );

@@ -26,7 +26,7 @@ import {MyContext} from '../storage/context'
   export default function Tasks(props) {    
     
     const [task, setTask] = useState([])
-    const { getTask } = useContext(MyContext)
+    const { getTask,setCurrentTask } = useContext(MyContext)
 
 
     const run = async () => {
@@ -46,6 +46,10 @@ import {MyContext} from '../storage/context'
      const handlePress = () => {
         props.navigation.navigate('Create task')
      }
+
+    const sendId = (task) => {
+      setCurrentTask(task)
+    }
     
   const renderItem = ({ item }) => (
     <TaskItem navigation={props.navigation} id={item.id} description={item.description}/>
@@ -59,6 +63,7 @@ import {MyContext} from '../storage/context'
         keyExtractor={item => String(item.id)}
         data={task}
         renderItem={renderItem}
+        onPress={sendId(task.id)}
       />
     </View>
   );

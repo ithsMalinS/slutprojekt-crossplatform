@@ -24,6 +24,13 @@ export async function getTasks() {
   return tasks
 }
 
+export async function getTasksById(id) {
+
+  const task = await API.get(`/tasks/${id}`)
+  // console.log(tasks)
+  return task
+}
+
 
 export async function login(username, password) {
   try {

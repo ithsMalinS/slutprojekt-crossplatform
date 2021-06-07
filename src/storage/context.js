@@ -12,6 +12,7 @@ const MyContextProvider = props => {
   const [user, setUser] = useState([])
   const [currentUser, setCurrentUser] = useState([])
   const [currentTasks, setCurrentTasks] = useState([])
+  const [currentTask, setCurrentTask] = useState([])
 
   const switchTheme = newTheme => {
     setTheme(newTheme)
@@ -39,9 +40,16 @@ const MyContextProvider = props => {
     //console.log(me);
     return task
   }
+  const getTaskById = async (id) =>{
+    //console.log('hej');
+    const task = await API.getTaskById(id)
+    setCurrentTask(task)
+    //console.log(me);
+    return task
+  }
   
   return(
-    <MyContext.Provider value={{theme, switchTheme, user, logIn, currentUser, getMe, currentTasks, getTask}}>
+    <MyContext.Provider value={{theme, switchTheme, user, logIn, currentUser, getMe, currentTasks, getTask, currentTask, getTaskById, setCurrentTask}}>
       {props.children}   
     </MyContext.Provider>
   )
