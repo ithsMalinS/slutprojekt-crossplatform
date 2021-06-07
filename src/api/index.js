@@ -14,8 +14,14 @@ export async function fetchTasks() {
 export async function getMe() {
   //console.log(response.headers);
   const me = await API.get("/me")
-  console.log(me)
+  // console.log(me)
   return me
+}
+export async function getTasks() {
+  //console.log(response.headers);
+  const tasks = await API.get("/tasks")
+  // console.log(tasks)
+  return tasks
 }
 
 

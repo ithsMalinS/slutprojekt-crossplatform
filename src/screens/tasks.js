@@ -1,29 +1,48 @@
 //import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import TaskItem from '../components/taskItem'
 import Button from '../components/button'
+import {MyContext} from '../storage/context'
 
-const DATA = [
-    {
-      id: 1,
-      description: 'Bygg en veranda',
-      imageFile: ''
-    },
-    {
-      id: 2,
-      description: 'Fixa taket',
-      imageFile: ''
-    },
-    {
-      id: 3,
-      description: 'Riv en vägg',
-      imageFile: ''
-    },
-  ]
+// const DATA = [
+//     {
+//       id: 1,
+//       description: 'Bygg en veranda',
+//       imageFile: ''
+//     },
+//     {
+//       id: 2,
+//       description: 'Fixa taket',
+//       imageFile: ''
+//     },
+//     {
+//       id: 3,
+//       description: 'Riv en vägg',
+//       imageFile: ''
+//     },
+//   ]
   
   export default function Tasks(props) {    
     
+    const [task, setTask] = useState([])
+    const { getTask } = useContext(MyContext)
+
+
+    const run = async () => {
+      const task = await getTask()
+      //console.log(user.data.user);
+      setTask(task.data.tasks)  
+     }
+  
+    useEffect(() =>{ 
+      run()
+      // getMe().then((user)=> setUser(user))
+      //getMe().then(setUser)
+      
+    },[])
+
+
      const handlePress = () => {
         props.navigation.navigate('Create task')
      }
@@ -38,7 +57,7 @@ const DATA = [
       <Text style={styles.heading}>Your tasks</Text> 
       <FlatList
         keyExtractor={item => String(item.id)}
-        data={DATA}
+        data={task}
         renderItem={renderItem}
       />
     </View>
