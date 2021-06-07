@@ -12,22 +12,20 @@ export async function fetchTasks() {
 }
 
 export async function getMe() {
-  console.log(response.headers);
+  //console.log(response.headers);
   const me = await API.get("/me")
+  console.log(me)
   return me
 }
 
 
 export async function login(username, password) {
   try {
-    
     const response = await API.post("/authenticate", {
       username: username,
       password: password,
     })
-    
     if (response.status == 200) {
-      
       setToken(response.data.token)
     } 
     return response.status

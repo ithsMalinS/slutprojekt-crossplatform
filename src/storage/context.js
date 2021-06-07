@@ -19,15 +19,15 @@ const MyContextProvider = props => {
   const logIn = async (username, password) =>{
    const test = await API.login(username, password)
     setUser(username)
-    console.log('storage' + test)
+    //console.log('storage' + test)
     return test
   }
 
   const getMe = async () =>{
-    console.log('hej');
+    //console.log('hej');
     const me = await API.getMe()
     setCurrentUser(me)
-    console.log(me);
+    //console.log(me);
     return me
   }
   

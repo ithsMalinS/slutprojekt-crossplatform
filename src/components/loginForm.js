@@ -27,7 +27,7 @@ export default function LoginForm(props) {
 
     if(auth == 200){
       props.navigation.navigate('Home')
-      const user = await getMe()
+      //const user = await getMe()
     }else{
       console.log('du får inte')
     }
