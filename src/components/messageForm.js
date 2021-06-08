@@ -9,7 +9,7 @@ export default function MessageForm(props) {
     <View style={styles.container}>
       <Text>Message form!</Text>
       <TextInput placeholder='Write your message here..' style={[LogStyle.inputField,styles.inputField]}/>
-      <Button title='Send message'/>
+      <Button title='Send message' onPress=''/>
 
     </View>
   );
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputField: {
-    height: 600
+    height: 130
   }
 });
