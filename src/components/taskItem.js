@@ -3,16 +3,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function TaskItem(props) {   
-  
-  const handlePress = () => {
-    
-    props.navigation.navigate('Task details')
-}
 
   return (
     <View style={styles.container}>
       <Text style={styles.taskId}>Task ID: {props.id}</Text>
-      <Text style={styles.description} onPress={handlePress}>{props.description}</Text>
+      <Text style={styles.description}>{props.description}</Text>
     </View>
   );
 }

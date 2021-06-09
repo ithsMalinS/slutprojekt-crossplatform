@@ -1,72 +1,50 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState, useContext} from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import Header from '../components/header'
 import TaskItem from '../components/taskItem'
+import TaskDetail from '../components/TaskDetail'
 import Button from '../components/button'
 import {MyContext} from '../storage/context'
-
-// const DATA = [
-//     {
-//       id: 1,
-//       description: 'Bygg en veranda',
-//       imageFile: ''
-//     },
-//     {
-//       id: 2,
-//       description: 'Fixa taket',
-//       imageFile: ''
-//     },
-//     {
-//       id: 3,
-//       description: 'Riv en vägg',
-//       imageFile: ''
-//     },
-//   ]
   
   export default function Tasks(props) {    
-    
     const [task, setTask] = useState([])
-    const { getTask,setCurrentTask } = useContext(MyContext)
-
+    const [activeTask, setActiveTask] = useState(null)
+    const {getTask} = useContext(MyContext)
 
     const run = async () => {
       const task = await getTask()
-      //console.log(user.data.user);
       setTask(task.data.tasks)  
      }
   
     useEffect(() =>{ 
-      run()
-      // getMe().then((user)=> setUser(user))
-      //getMe().then(setUser)
-      
+      run()      
     },[])
 
 
-     const handlePress = () => {
+     /* const handlePress = () => {
         props.navigation.navigate('Create task')
-     }
+     } */
 
-    const sendId = (task) => {
-      setCurrentTask(task)
-    }
     
   const renderItem = ({ item }) => (
-    <TaskItem navigation={props.navigation} id={item.id} description={item.description}/>
+    <TouchableOpacity onPress={() => {setActiveTask(item)}}>
+      <TaskItem id={item.id} description={item.description}/>
+    </TouchableOpacity>
   )
 
   return (
     <View style={styles.container}>
-      <Header />
-      <Button title='Create Task' onPress={handlePress} />
+      <Header navigation={props.navigation} />
+      {/* <Button title='Create Task' onPress={handlePress} /> */}
       <Text style={styles.heading}>Your tasks</Text> 
       <FlatList
         keyExtractor={item => String(item.id)}
         data={task}
         renderItem={renderItem}
-        onPress={sendId(task.id)}
       />
+      { activeTask && <TaskDetail task={activeTask} closeTask={() => setActiveTask(null)} /> }
+      
     </View>
   );
 }
@@ -87,5 +65,5 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingHorizontal: 130,
     borderRadius: 5
-  }
+  },
 });
