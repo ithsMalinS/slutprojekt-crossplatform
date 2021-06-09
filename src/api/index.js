@@ -31,6 +31,12 @@ export async function getTasksById(id) {
   return task
 }
 
+export async function getMessagesByTask(task){
+  const messages = await API.get(`/tasks/${task}/messages`)
+  console.log(messages)
+  return messages
+}
+
 
 export async function login(username, password) {
   try {

@@ -47,9 +47,14 @@ const MyContextProvider = props => {
     //console.log(me);
     return task
   }
+
+  const getMessagesByTask = async (task) => {
+    const messages = await API.getMessagesByTask(task)
+    return messages
+  }
   
   return(
-    <MyContext.Provider value={{theme, switchTheme, user, logIn, currentUser, getMe, currentTasks, getTask, currentTask, getTaskById, setCurrentTask}}>
+    <MyContext.Provider value={{theme, switchTheme, user, logIn, currentUser, getMe, currentTasks, getTask, currentTask, getTaskById, setCurrentTask, getMessagesByTask}}>
       {props.children}   
     </MyContext.Provider>
   )

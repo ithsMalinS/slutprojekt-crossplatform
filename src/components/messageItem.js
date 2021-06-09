@@ -7,7 +7,8 @@ export default function MessageItem(props) {
   return (
     <View style={styles.container}>
       <Text>Message text</Text>
-      <Text>BLASBLDBLASDBLABLD BASDLB blbsdblabjsdlbj</Text>
+      <Text>{props.message}</Text>
+      
     </View>
   );
 }
@@ -15,9 +16,9 @@ export default function MessageItem(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
