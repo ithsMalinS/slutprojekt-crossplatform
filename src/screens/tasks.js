@@ -1,6 +1,7 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState, useContext} from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import Header from '../components/header'
 import TaskItem from '../components/taskItem'
 import Button from '../components/button'
 import {MyContext} from '../storage/context'
@@ -57,6 +58,7 @@ import {MyContext} from '../storage/context'
 
   return (
     <View style={styles.container}>
+      <Header />
       <Button title='Create Task' onPress={handlePress} />
       <Text style={styles.heading}>Your tasks</Text> 
       <FlatList
