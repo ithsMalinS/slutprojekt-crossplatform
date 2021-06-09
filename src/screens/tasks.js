@@ -75,7 +75,7 @@ import {MyContext} from '../storage/context'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#869f9f',
     alignItems: 'center',
     justifyContent: 'center',
   },
