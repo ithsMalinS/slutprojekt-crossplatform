@@ -52,9 +52,33 @@ const MyContextProvider = props => {
     const messages = await API.getMessagesByTask(task)
     return messages
   }
+
+
+  const postImage = async (task, formData) => {
+    console.log('steg2')
+    console.log(formData);
+    const Image = await API.postImage(task, formData)
+    return Image
+  }
+
+
   
   return(
-    <MyContext.Provider value={{theme, switchTheme, user, logIn, currentUser, getMe, currentTasks, getTask, currentTask, getTaskById, setCurrentTask, getMessagesByTask}}>
+    <MyContext.Provider value={
+      {theme,
+       switchTheme,
+        user,
+         logIn,
+          currentUser,
+           getMe,
+            currentTasks,
+             getTask,
+              currentTask,
+               getTaskById,
+                setCurrentTask,
+                 getMessagesByTask,
+                  postImage
+                  }}>
       {props.children}   
     </MyContext.Provider>
   )

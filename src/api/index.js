@@ -37,6 +37,13 @@ export async function getMessagesByTask(task){
 }
 
 
+export async function postImage(task, formData){
+  console.log('steg3');
+  const Image = await API.post(`/tasks/${task}/image`, formData)
+  return Image
+}
+
+
 export async function login(username, password) {
   try {
     const response = await API.post("/authenticate", {
