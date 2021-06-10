@@ -42,6 +42,10 @@ const MyContextProvider = props => {
     return newMessage
   }
 
+  const createNewTask = async (clientId, message) => {
+    const task = await API.createNewTask(clientId, message)
+    return task
+  }
 
   
   return(
@@ -52,7 +56,8 @@ const MyContextProvider = props => {
         getTaskById,
         getMessagesByTask,
         postImage,
-        postMessage
+        postMessage,
+        createNewTask
       }}>
       {props.children}   
     </MyContext.Provider>

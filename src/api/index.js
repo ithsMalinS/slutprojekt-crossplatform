@@ -26,6 +26,14 @@ export async function getTasksById(id) {
   return task
 }
 
+export async function createNewTask(clientId, message) {
+  const task = await API.post(`/tasks`, {
+      description: message,
+      CustomerID: clientId
+  })
+  return task
+}
+
 export async function getMessagesByTask(task){
   const messages = await API.get(`/tasks/${task}/messages`)
   return messages

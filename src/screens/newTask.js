@@ -1,15 +1,15 @@
-//import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import TaskForm from '../components/taskForm'
+import Header from '../components/header'
 
 export default function NewTask(props) {    
 
   return (
     <View style={styles.container}>
-      <Text>New Task!</Text>
+      <Header navigation={props.navigation} />
      
-      <TaskForm/>
+      <TaskForm />
     </View>
   );
 }

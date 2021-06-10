@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   taskId: {
-    fontSize: 20,
+    fontSize: 15,
     color: 'white'
   },
   description: {
     color: 'white',
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 20,
   }
 });
