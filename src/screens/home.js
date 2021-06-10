@@ -3,6 +3,7 @@ import { StyleSheet, Text, View} from 'react-native';
 //import { getMe } from '../api';
 import Header from '../components/header'
 import { MyContext } from '../storage/context'
+import ImagePicker from '../components/ImagePicker'
 
 
 
@@ -30,6 +31,7 @@ export default function Home(props) {
     <Header navigation={props.navigation}/>
       <Text>{user.username}</Text>
       <Text>{user.role}</Text>
+      <ImagePicker />
 
     </View>
   );
