@@ -33,7 +33,6 @@ export async function getTasksById(id) {
 
 export async function getMessagesByTask(task){
   const messages = await API.get(`/tasks/${task}/messages`)
-  console.log(messages)
   return messages
 }
 

@@ -19,14 +19,14 @@ export default function Messages(props) {
       run()      
     },[])
 
-    const renderItem = ({item}) => {
-      <MessageItem message={item.text} />
-    }
+    const renderItem = ({item}) => (
+      <MessageItem message={item.text} user={item.UserId}/>
+    )
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>All messages</Text>
-      {/* <MessageForm/> */}
+      <MessageForm/>
       <FlatList
         keyExtractor={item => String(item.id)}
         data={messages}

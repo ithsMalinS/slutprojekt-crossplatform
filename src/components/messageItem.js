@@ -6,9 +6,8 @@ export default function MessageItem(props) {
 
   return (
     <View style={styles.container}>
-      <Text>Message text</Text>
+      <Text>From: {props.user}</Text>
       <Text>{props.message}</Text>
-      
     </View>
   );
 }
@@ -20,5 +19,6 @@ const styles = StyleSheet.create({
     // backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
+    paddingTop: 20
   },
 });
