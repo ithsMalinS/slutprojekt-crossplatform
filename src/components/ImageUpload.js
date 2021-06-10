@@ -13,9 +13,6 @@ export default function TaskInfo(props) {
 
   useEffect(() => {
     ImagePicker.requestMediaLibraryPermissionsAsync()
-      .then(response => {
-        console.log(response);
-      })
   }, [])
 
   const pickImage = async () => {

@@ -11,7 +11,7 @@ import Button from '../components/button'
 
 export default function LoginForm(props) {
 
-  const [username, setUsername] = useState('Tuffaste Admin')
+  const [username, setUsername] = useState('arbetarn')
   const [password, setPassword] = useState('makrill')
 
   const {logIn } = useContext(MyContext)

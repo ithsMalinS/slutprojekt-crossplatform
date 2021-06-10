@@ -26,7 +26,7 @@ export default function Messages(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>All messages</Text>
-      <MessageForm/>
+      <MessageForm task={props.task}/>
       <FlatList
         keyExtractor={item => String(item.id)}
         data={messages}

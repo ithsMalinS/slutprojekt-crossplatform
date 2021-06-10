@@ -12,22 +12,17 @@ export async function fetchTasks() {
 }
 
 export async function getMe() {
-  //console.log(response.headers);
   const me = await API.get("/me")
-  // console.log(me)
   return me
 }
 export async function getTasks() {
-  //console.log(response.headers);
   const tasks = await API.get("/tasks")
-  // console.log(tasks)
   return tasks
 }
 
 export async function getTasksById(id) {
 
   const task = await API.get(`/tasks/${id}`)
-  // console.log(tasks)
   return task
 }
 
@@ -38,11 +33,16 @@ export async function getMessagesByTask(task){
 
 
 export async function postImage(task, formData){
-  console.log('steg3');
   const Image = await API.post(`/tasks/${task}/image`, formData)
   return Image
 }
 
+export async function postMessage (task, message) {
+  const newMessage = await API.post(`/tasks/${task}/messages`, {
+    text: message
+  })
+  return newMessage
+}
 
 export async function login(username, password) {
   try {

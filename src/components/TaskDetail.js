@@ -10,13 +10,14 @@ export default function TaskDetail(props) {
   return (
     <View style={styles.container}>
         <View style={styles.taskContainer}>
-        <TouchableOpacity style={styles.close} onPress={props.closeTask}>
-            <Text style={styles.closeText}>X</Text>
-        </TouchableOpacity>
-      <Text style={styles.heading}>Task details</Text>
-      <Text>Task ID: {props.task.id}</Text>
-      <Text>Description: {props.task.description}</Text>
-      <Messages task={props.task.id}/>
+          <TouchableOpacity style={styles.close} onPress={props.closeTask}>
+              <Text style={styles.closeText}>X</Text>
+          </TouchableOpacity>
+          
+          <Text style={styles.heading}>Task details</Text>
+          <Text>Task ID: {props.task.id}</Text>
+          <Text>Description: {props.task.description}</Text>
+          <Messages task={props.task.id}/>
       </View>
     </View>
   );

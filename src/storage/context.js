@@ -7,44 +7,23 @@ const MyContext = React.createContext()
 
 
 const MyContextProvider = props => {
-
-  const [theme, setTheme] = useState("dark")
-  const [user, setUser] = useState([])
-  const [currentUser, setCurrentUser] = useState([])
-  const [currentTasks, setCurrentTasks] = useState([])
-  const [currentTask, setCurrentTask] = useState([])
-
-  const switchTheme = newTheme => {
-    setTheme(newTheme)
-  }
   
   const logIn = async (username, password) =>{
-   const test = await API.login(username, password)
-    setUser(username)
-    //console.log('storage' + test)
+    const test = await API.login(username, password)
     return test
   }
 
   const getMe = async () =>{
-    //console.log('hej');
     const me = await API.getMe()
-    setCurrentUser(me)
-    //console.log(me);
     return me
   }
 
   const getTask = async () =>{
-    //console.log('hej');
     const task = await API.getTasks()
-    setCurrentTasks(task)
-    //console.log(me);
     return task
   }
   const getTaskById = async (id) =>{
-    //console.log('hej');
     const task = await API.getTaskById(id)
-    setCurrentTask(task)
-    //console.log(me);
     return task
   }
 
@@ -53,32 +32,28 @@ const MyContextProvider = props => {
     return messages
   }
 
-
   const postImage = async (task, formData) => {
-    console.log('steg2')
-    console.log(formData);
     const Image = await API.postImage(task, formData)
     return Image
+  }
+
+  const postMessage = async (task, message) => {
+    const newMessage = await API.postMessage(task, message)
+    return newMessage
   }
 
 
   
   return(
     <MyContext.Provider value={
-      {theme,
-       switchTheme,
-        user,
-         logIn,
-          currentUser,
-           getMe,
-            currentTasks,
-             getTask,
-              currentTask,
-               getTaskById,
-                setCurrentTask,
-                 getMessagesByTask,
-                  postImage
-                  }}>
+      { logIn,
+        getMe,
+        getTask,
+        getTaskById,
+        getMessagesByTask,
+        postImage,
+        postMessage
+      }}>
       {props.children}   
     </MyContext.Provider>
   )
