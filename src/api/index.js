@@ -35,8 +35,14 @@ export async function createNewTask(clientId, message) {
 }
 
 export async function getMessagesByTask(task){
-  const messages = await API.get(`/tasks/${task}/messages`)
-  return messages
+  try{
+    const messages = await API.get(`/tasks/${task}/messages`)
+    return messages
+  }catch(err){
+    console.log(err.response.status)
+    console.log(err.response.data)
+    return false
+  }
 }
 
 

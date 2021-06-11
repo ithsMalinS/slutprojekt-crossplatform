@@ -7,12 +7,14 @@ import {MyContext} from '../storage/context'
 
 export default function Messages(props) {
   
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(null)
   const {getMessagesByTask} = useContext(MyContext)
 
     const run = async () => {
       const Messages = await getMessagesByTask(props.task)
-      setMessages(Messages.data.messages)  
+      if(Messages){
+        setMessages(Messages.data.messages)
+      }
      }
   
     useEffect(() =>{ 
@@ -26,12 +28,12 @@ export default function Messages(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>All messages</Text>
-      <MessageForm task={props.task}/>
-      <FlatList
+      <MessageForm task={props.task} getMessages={run}/>
+      {messages && <FlatList
         keyExtractor={item => String(item.id)}
         data={messages}
         renderItem={renderItem}
-      />
+      />}
     </View>
   );
 }

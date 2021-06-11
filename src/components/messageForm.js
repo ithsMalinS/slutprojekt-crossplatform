@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Pressable, Keyboard } from 'react-native';
 import { MyContext } from '../storage/context'
 
 export default function MessageForm(props) {    
@@ -9,6 +9,8 @@ export default function MessageForm(props) {
 
   const sendMessage = async () => {
     const newMesssage = await postMessage(props.task, message).then(setMessage(''))
+    await props.getMessages()
+    Keyboard.dismiss()
   }
 
   return (
