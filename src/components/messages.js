@@ -27,7 +27,7 @@ export default function Messages(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>All messages</Text>
+      {/* <Text style={styles.heading}>All messages</Text> */}
       <MessageForm task={props.task} getMessages={run}/>
       {messages && <FlatList
         keyExtractor={item => String(item.id)}
@@ -42,12 +42,10 @@ export default function Messages(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: 10
   },
   heading:{
-    fontSize: 30,
+    fontSize: 20,
       }
 
   
