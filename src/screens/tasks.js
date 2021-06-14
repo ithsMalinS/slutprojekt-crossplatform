@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native
 import Header from '../components/header'
 import TaskItem from '../components/taskItem'
 import TaskDetail from '../components/TaskDetail'
-import Button from '../components/button'
 import {MyContext} from '../storage/context'
   
   export default function Tasks(props) {    
@@ -29,7 +28,7 @@ import {MyContext} from '../storage/context'
     
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => {setActiveTask(item)}}>
-      <TaskItem id={item.id} description={item.description}/>
+      <TaskItem task={item}/>
     </TouchableOpacity>
   )
 

@@ -27,7 +27,6 @@ export default function LoginForm(props) {
   const signIn = async () => {
     Keyboard.dismiss()
     const auth = await logIn(username, password)
-    console.log(auth)
     if(auth){
       props.navigation.navigate('Home')
     }else{
