@@ -13,28 +13,31 @@ export default function LoginForm(props) {
 
   const [username, setUsername] = useState('arbetarn')
   const [password, setPassword] = useState('makrill')
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const {logIn } = useContext(MyContext)
 
+  const setError = () => {
+    setErrorMessage('Invalid username or password')
+    setTimeout(() => {
+      setErrorMessage(null)
+    }, 3000);
+  }
+
   const signIn = async () => {
     Keyboard.dismiss()
-    //console.log(username)
-    //console.log(password)
-    // setUsername('')
-    // setPassword('')
     const auth = await logIn(username, password)
-    console.log('login'+ auth)
-
-    if(auth == 200){
+    console.log(auth)
+    if(auth){
       props.navigation.navigate('Home')
-      //const user = await getMe()
     }else{
-      console.log('du får inte')
+      setError()
     }
   }
 
   return (
     <View style={styles.container}>
+      {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
       <TextInput
         placeholder="username"
         style={LogStyle.inputField}
@@ -60,41 +63,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // inputField: {
-  //   backgroundColor: 'floralwhite',
-  //   color: 'black',
-  //   padding: 10,
-  //   paddingHorizontal: 20,
-  //   width: 300,
-  //   fontSize: 20,
-  //   marginBottom: 20,
-  //   borderRadius: 20,
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-	//     width: 0,
-	//     height: 2,
-  //   },
-  //   shadowOpacity: 0.25,
-  //   shadowRadius: 3.84,
-  //   elevation: 5,
-  // },
-  // buttonText: {
-  //   fontSize: 20,
-  //   color: 'white'
-  // },
-  // button: {
-  //   backgroundColor: '#4e9ac7',
-  //   color: 'white',
-  //   padding: 10,
-  //   paddingHorizontal: 35,
-  //   borderRadius: 20,
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-	//     width: 0,
-	//     height: 2,
-  //   },
-  //   shadowOpacity: 0.25,
-  //   shadowRadius: 3.84,
-  //   elevation: 5,
-  // }
+  error: {
+    color: '#b20000',
+    marginBottom: 20,
+    fontSize: 20
+  }
 });

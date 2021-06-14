@@ -8,7 +8,7 @@ import Button from '../components/button'
 import {MyContext} from '../storage/context'
   
   export default function Tasks(props) {    
-    const [task, setTask] = useState([])
+    const [task, setTask] = useState(null)
     const [activeTask, setActiveTask] = useState(null)
     const {getTask} = useContext(MyContext)
 
@@ -38,11 +38,11 @@ import {MyContext} from '../storage/context'
       <Header navigation={props.navigation} />
       {/* <Button title='Create Task' onPress={handlePress} /> */}
       <Text style={styles.heading}>Your tasks</Text> 
-      <FlatList
+      { task && <FlatList
         keyExtractor={item => String(item.id)}
         data={task}
         renderItem={renderItem}
-      />
+      /> }
       { activeTask && <TaskDetail task={activeTask} closeTask={() => setActiveTask(null)} /> }
       
     </View>
