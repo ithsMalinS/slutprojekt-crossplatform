@@ -69,10 +69,14 @@ export async function login(username, password) {
       username: username,
       password: password,
     })
-    if (response.status == 200) {
+    if(response == undefined){
+      return false
+    } else if (response.status == 200) {
       setToken(response.data.token)
+
+      return true
     }
-    return response.status
+
   } catch (err) {
     console.log(err)
   }

@@ -4,11 +4,10 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native
 import Header from '../components/header'
 import TaskItem from '../components/taskItem'
 import TaskDetail from '../components/TaskDetail'
-import Button from '../components/button'
 import {MyContext} from '../storage/context'
   
   export default function Tasks(props) {    
-    const [task, setTask] = useState([])
+    const [task, setTask] = useState(null)
     const [activeTask, setActiveTask] = useState(null)
     const {getTask} = useContext(MyContext)
 
@@ -29,7 +28,7 @@ import {MyContext} from '../storage/context'
     
   const renderItem = ({ item }) => (
     <TouchableOpacity onPress={() => {setActiveTask(item)}}>
-      <TaskItem id={item.id} description={item.description}/>
+      <TaskItem task={item}/>
     </TouchableOpacity>
   )
 
@@ -38,11 +37,11 @@ import {MyContext} from '../storage/context'
       <Header navigation={props.navigation} />
       {/* <Button title='Create Task' onPress={handlePress} /> */}
       <Text style={styles.heading}>Your tasks</Text> 
-      <FlatList
+      { task && <FlatList
         keyExtractor={item => String(item.id)}
         data={task}
         renderItem={renderItem}
-      />
+      /> }
       { activeTask && <TaskDetail task={activeTask} closeTask={() => setActiveTask(null)} /> }
       
     </View>

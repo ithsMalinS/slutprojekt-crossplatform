@@ -6,8 +6,8 @@ export default function MessageItem(props) {
 
   return (
     <View style={styles.container}>
-      <Text>From: {props.user}</Text>
-      <Text>{props.message}</Text>
+      <Text style={styles.from}>From: {props.user}</Text>
+      <Text style={styles.message}>{props.message}</Text>
     </View>
   );
 }
@@ -19,6 +19,17 @@ const styles = StyleSheet.create({
     // backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
-    paddingTop: 20
+    backgroundColor: '#DBEAF3',
+    padding: 10,
+    paddingHorizontal: 20,
+    marginBottom: 10,
+    borderRadius: 30,
+    width: 270
   },
+  from: {
+    color: 'grey',
+  },
+  message: {
+    fontSize: 20
+  }
 });

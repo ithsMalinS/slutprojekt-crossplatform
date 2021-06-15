@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Pressable, Keyboard, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import { MyContext } from '../storage/context'
-import setValues from '../storage/expoStorage';
+
+import Logo from '../assets/right-arrow.png'
+
 
 export default function MessageForm(props) {    
 
@@ -16,17 +18,22 @@ export default function MessageForm(props) {
 
   return (
     <View style={styles.container}>
-      <Text>Message form!</Text>
+     <KeyboardAvoidingView
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      style={styles.avoidingView}
+     >
       <TextInput
         value={message}
         onChangeText={text => setMessage(text)} 
         placeholder='Write your message here..' 
         style={styles.inputField}/>
       <Pressable 
-        style={styles.button} 
         onPress={sendMessage} >
-          <Text style={styles.buttonText}> send </Text>
+          <Image
+          style={styles.sendLogo} 
+          source={Logo} />
       </Pressable>
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -34,18 +41,29 @@ export default function MessageForm(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
   },
  inputField: {
     backgroundColor: 'white',
+    borderWidth: 2,
+    borderRadius: 50,
+    borderColor: '#4c9ac7',
+    paddingHorizontal: 20,
+    marginRight: 5,
+    height: 40,
+    width: 250
   },
-  button: {
-    backgroundColor: 'blue',
-    width: 80,
-    borderRadius: 50
+  avoidingView: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  buttonText: {
-    textAlign: 'center',
-    fontSize: 20
+  sendLogo: {
+    width: 30,
+    height: 30,
   }
 });

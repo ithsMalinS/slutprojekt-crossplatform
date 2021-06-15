@@ -5,13 +5,9 @@ import LoginForm from '../components/loginForm'
 
 export default function Login(props) {
 
-  
-
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Login!</Text>
       <LoginForm navigation={props.navigation} />
-     
     </View>
   );
 }

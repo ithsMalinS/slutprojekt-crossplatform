@@ -1,13 +1,40 @@
 //import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function TaskItem(props) {   
 
+  const [done, setDone] = useState(null)
+  const todoBackgroundColor = '#C0C0C0'
+  const doneBackgroundColor = '#999797'
+  const doneTextColor = '#cfcfcf'
+
+  const checkDone = () => {
+    if (props.task.done == true){
+      setDone(true)
+    } else {
+      setDone(false)
+    }
+  }
+
+  useEffect(() =>{ 
+    checkDone()     
+  },[])
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.taskId}>Task ID: {props.id}</Text>
-      <Text style={styles.description}>{props.description}</Text>
+    <View style={[
+        styles.container,
+        { backgroundColor: done ? doneBackgroundColor : todoBackgroundColor }]}>
+      <Text style={[
+        styles.taskId,
+        { color: done ? doneTextColor : 'white'} ]}>
+          Task ID: {props.task.id}
+      </Text>
+      <Text style={[
+        styles.description,
+        { color: done ? doneTextColor : 'white'} ]}>
+          {props.task.description}
+      </Text>
     </View>
   );
 }
@@ -18,8 +45,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#C0C0C0',
-    color: 'white',
     marginTop: 30,
     padding: 10,
     paddingHorizontal: 90,
@@ -35,10 +60,8 @@ const styles = StyleSheet.create({
   },
   taskId: {
     fontSize: 15,
-    color: 'white'
   },
   description: {
-    color: 'white',
     textAlign: 'center',
     fontSize: 20,
   }
