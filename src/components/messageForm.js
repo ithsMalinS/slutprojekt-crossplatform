@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, TextInput, Pressable, Keyboard } from 'react-native';
 import { MyContext } from '../storage/context'
+import setValues from '../storage/expoStorage';
 
 export default function MessageForm(props) {    
 
