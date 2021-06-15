@@ -5,17 +5,27 @@ import Header from "../components/header"
 import { MyContext } from "../storage/context"
 import ImageUpload from "../components/ImageUpload"
 import Button from "../components/button"
-import SetValues from "../storage/expoStorage"
+//import {setValues, getValueFor} from "../storage/expoStorage"
 
 export default function Home(props) {
-  const [user, setUser] = useState([])
+  const [me, setUser] = useState([])
   const { getMe } = useContext(MyContext)
   const { logOut } = useContext(MyContext)
+  const {user} = useContext(MyContext)
+  //const [inputKey, setKey] = React.useState("key")
+  //const [inputValue, setValue] = React.useState("value")
 
   const run = async () => {
-    const user = await getMe()
+    console.log('hej nu kör vi')
+    //const user = await getMe()
     //console.log(user.data.user);
-    setUser(user.data.user)
+    //setUser(user.data.user)
+    setUser(user)
+    
+    
+    //setValues('role',user.data.user.role)
+    //getValueFor('role')
+    
   }
 
   useEffect(() => {
@@ -24,21 +34,25 @@ export default function Home(props) {
     //getMe().then(setUser)
   }, [])
 
+  
+
+
   const signOut = async () => {
-    props.navigation.navigate('Login')
+    props.navigation.navigate("Login")
     const status = await logOut()
-    setUser(false)
+   setUser(false)
     console.log("token =", status)
   }
 
   return (
     <View style={styles.container}>
       <Header navigation={props.navigation} />
-      <Text>{user.username}</Text>
-      <Text>{user.role}</Text>
+     
+      <Text>{me.username}</Text>
+      <Text>{me.role}</Text>
 
       <Button title="Log out" onPress={signOut}></Button>
-      <SetValues></SetValues>
+      
       <ImageUpload />
     </View>
   )

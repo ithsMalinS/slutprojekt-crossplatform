@@ -18,7 +18,7 @@ export async function getMe() {
   try {
     const me = await API.get("/me")
 
-    return me
+    return me.data.user
   } catch (err) {}
 }
 
@@ -72,6 +72,7 @@ export async function login(username, password) {
     if(response == undefined){
       return false
     } else if (response.status == 200) {
+      console.log(response.data.token)
       setToken(response.data.token)
 
       return true
@@ -84,9 +85,10 @@ export async function login(username, password) {
 
 export async function logOut() {
   try {
-    setToken(false)
-    const token = API.defaults.headers.common["Authorization"]
+    //setToken(null)
+   // const token = API.defaults.headers.common["Authorization"]
+   delete API.defaults.headers.common["Authorization"]
 
-    return token
+    //return token
   } catch (err) {}
 }

@@ -5,13 +5,19 @@ import * as API from "../api"
 const MyContext = React.createContext()
 
 const MyContextProvider = (props) => {
+
+const [user, setUser] = useState(null)
+
   const logIn = async (username, password) => {
     const test = await API.login(username, password)
+    await getMe()
     return test
   }
 
   const getMe = async () => {
     const me = await API.getMe()
+    console.log(me)
+    setUser(me)
     return me
   }
 
@@ -61,6 +67,7 @@ const MyContextProvider = (props) => {
         postMessage,
         createNewTask,
         logOut,
+        user
       }}
     >
       {props.children}
