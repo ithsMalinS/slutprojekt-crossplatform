@@ -6,54 +6,59 @@ export function setToken(token) {
   API.defaults.headers.common["Authorization"] = token
 }
 
+
+
+//verkar inte användas
 export async function fetchTasks() {
   const tasks = await API.get("/tasks")
   return tasks.tasks
 }
 
 export async function getMe() {
-  const me = await API.get("/me")
-  return me
+  try {
+    const me = await API.get("/me")
+
+    return me
+  } catch (err) {}
 }
+
 export async function getTasks() {
   const tasks = await API.get("/tasks")
   return tasks
 }
 
 export async function getTasksById(id) {
-
   const task = await API.get(`/tasks/${id}`)
   return task
 }
 
 export async function createNewTask(clientId, message) {
   const task = await API.post(`/tasks`, {
-      description: message,
-      CustomerID: clientId
+    description: message,
+    CustomerID: clientId,
   })
   return task
 }
 
-export async function getMessagesByTask(task){
-  try{
+export async function getMessagesByTask(task) {
+  try {
     const messages = await API.get(`/tasks/${task}/messages`)
     return messages
-  }catch(err){
+  } catch (err) {
     console.log(err.response.status)
     console.log(err.response.data)
     return false
   }
 }
 
-
-export async function postImage(task, formData){
+export async function postImage(task, formData) {
   const Image = await API.post(`/tasks/${task}/image`, formData)
   return Image
 }
 
-export async function postMessage (task, message) {
+export async function postMessage(task, message) {
   const newMessage = await API.post(`/tasks/${task}/messages`, {
-    text: message
+    text: message,
   })
   return newMessage
 }
@@ -68,9 +73,20 @@ export async function login(username, password) {
       return false
     } else if (response.status == 200) {
       setToken(response.data.token)
+
       return true
     }
+
   } catch (err) {
-      console.log(err)
+    console.log(err)
   }
+}
+
+export async function logOut() {
+  try {
+    setToken(false)
+    const token = API.defaults.headers.common["Authorization"]
+
+    return token
+  } catch (err) {}
 }
