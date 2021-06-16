@@ -1,6 +1,7 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import  Swipeable  from 'react-native-gesture-handler/Swipeable';
 
 export default function TaskItem(props) {   
 
@@ -22,8 +23,16 @@ export default function TaskItem(props) {
   },[])
 
   return (
+    <Swipeable renderRightActions={
+    () => (
+      <View style={{backgroundColor:'red', padding: 20, marginTop:30}}>
+        <Text>
+         x
+        </Text>
+      </View>)
+    }>
     <View style={[
-        styles.container,
+      styles.container,
         { backgroundColor: done ? doneBackgroundColor : todoBackgroundColor }]}>
       <Text style={[
         styles.taskId,
@@ -36,6 +45,7 @@ export default function TaskItem(props) {
           {props.task.description}
       </Text>
     </View>
+    </Swipeable>
   );
 }
 
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 10,
     paddingHorizontal: 90,
-    borderRadius: 20,
+    // borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
 	    width: 0,
