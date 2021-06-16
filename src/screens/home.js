@@ -32,7 +32,7 @@ export default function Home(props) {
     run()
     // getMe().then((user)=> setUser(user))
     //getMe().then(setUser)
-  }, [])
+  }, [user])
 
   
 
