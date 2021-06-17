@@ -1,7 +1,8 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import  Swipeable  from 'react-native-gesture-handler/Swipeable';
+import checkImg from '../assets/check.png'
 
 export default function TaskItem(props) {   
 
@@ -9,6 +10,10 @@ export default function TaskItem(props) {
   const todoBackgroundColor = '#C0C0C0'
   const doneBackgroundColor = '#999797'
   const doneTextColor = '#cfcfcf'
+
+  const setStatus = () => {
+    console.log('heheheh')
+  }
 
   const checkDone = () => {
     if (props.task.done == true){
@@ -25,10 +30,8 @@ export default function TaskItem(props) {
   return (
     <Swipeable renderRightActions={
     () => (
-      <View style={{backgroundColor:'red', padding: 20, marginTop:30}}>
-        <Text>
-         x
-        </Text>
+      <View style={styles.optionsView} onPress={setStatus}>
+        <Image source={checkImg} style={styles.checkImg}/>
       </View>)
     }>
     <View style={[
@@ -74,5 +77,14 @@ const styles = StyleSheet.create({
   description: {
     textAlign: 'center',
     fontSize: 20,
+  },
+  checkImg: {
+    height: 30,
+    width: 30,
+    marginBottom: 10
+  },
+  optionsView: {
+    padding: 20,
+    marginTop:30,
   }
 });
