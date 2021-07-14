@@ -16,7 +16,7 @@ const [user, setUser] = useState(null)
 
   const getMe = async () => {
     const me = await API.getMe()
-    console.log(me)
+    console.log('get me from context', me)
     setUser(me)
     return me
   }
