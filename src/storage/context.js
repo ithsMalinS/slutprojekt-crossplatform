@@ -4,7 +4,7 @@ import * as API from "../api"
 
 const MyContext = React.createContext()
 
-const MyContextProvider = (props) => {
+const StateProvider = (props) => {
 
 const [user, setUser] = useState(null)
 
@@ -75,4 +75,4 @@ const [user, setUser] = useState(null)
   )
 }
 
-export { MyContextProvider, MyContext }
+export { StateProvider, MyContext }
