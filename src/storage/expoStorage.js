@@ -17,9 +17,9 @@ export async function setValues(key, value) {
 export async function getValueFor(key) {
   let result = await SecureStore.getItemAsync(key)
   if (result) {
-    alert("🔐 Here's your value 🔐 \n" + result)
+    //alert("🔐 Here's your value 🔐 \n" + result)
 
-    return true
+    return result
   } else {
     return false
     // alert("No values stored under that key.")

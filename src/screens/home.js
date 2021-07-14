@@ -9,50 +9,38 @@ import Button from "../components/button"
 
 export default function Home(props) {
   const [me, setUser] = useState([])
-  const { getMe } = useContext(MyContext)
+  //const { getMe } = useContext(MyContext)
   const { logOut } = useContext(MyContext)
-  const {user} = useContext(MyContext)
+  const { user } = useContext(MyContext)
   //const [inputKey, setKey] = React.useState("key")
   //const [inputValue, setValue] = React.useState("value")
 
   const run = async () => {
-    console.log('hej nu kör vi')
-    //const user = await getMe()
-    //console.log(user.data.user);
-    //setUser(user.data.user)
-    setUser(user)
-    
-    
-    //setValues('role',user.data.user.role)
-    //getValueFor('role')
-    
+    await setUser(user)
+    console.log('me',me)
   }
 
   useEffect(() => {
     run()
-    // getMe().then((user)=> setUser(user))
-    //getMe().then(setUser)
+    console.log('user', user)
   }, [user])
-
-  
-
 
   const signOut = async () => {
     props.navigation.navigate("Login")
     const status = await logOut()
-   setUser(false)
+    setUser(false)
     console.log("token =", status)
   }
 
   return (
     <View style={styles.container}>
       <Header navigation={props.navigation} />
-     
-      <Text>{me.username}</Text>
-      <Text>{me.role}</Text>
+
+      {/* <Text>{me.username}</Text>
+      <Text>{me.role}</Text> */}
 
       <Button title="Log out" onPress={signOut}></Button>
-      
+
       <ImageUpload />
     </View>
   )

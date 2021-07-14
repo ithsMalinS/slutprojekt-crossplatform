@@ -1,6 +1,9 @@
 import axios from "axios"
+import {setValues} from '../storage/expoStorage'
+
 const HOST = "10.0.2.2"
 const API = axios.create({ baseURL: `http://${HOST}:8080/api/v1` })
+
 
 export function setToken(token) {
   API.defaults.headers.common["Authorization"] = token
@@ -74,7 +77,7 @@ export async function login(username, password) {
     } else if (response.status == 200) {
       console.log(response.data.token)
       setToken(response.data.token)
-
+     setValues('token', response.data.token)
       return true
     }
 
