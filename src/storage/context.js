@@ -4,7 +4,7 @@ import * as API from "../api"
 
 const MyContext = React.createContext()
 
-const MyContextProvider = (props) => {
+const StateProvider = (props) => {
 
 const [user, setUser] = useState(null)
 
@@ -16,7 +16,7 @@ const [user, setUser] = useState(null)
 
   const getMe = async () => {
     const me = await API.getMe()
-    console.log(me)
+    console.log('get me from context', me)
     setUser(me)
     return me
   }
@@ -75,4 +75,4 @@ const [user, setUser] = useState(null)
   )
 }
 
-export { MyContextProvider, MyContext }
+export { StateProvider, MyContext }

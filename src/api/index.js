@@ -1,6 +1,9 @@
 import axios from "axios"
+import {setValues} from '../storage/expoStorage'
+
 const HOST = "10.0.2.2"
 const API = axios.create({ baseURL: `http://${HOST}:8080/api/v1` })
+
 
 export function setToken(token) {
   API.defaults.headers.common["Authorization"] = token
@@ -17,7 +20,7 @@ export async function fetchTasks() {
 export async function getMe() {
   try {
     const me = await API.get("/me")
-
+console.log('get me från api', me.data.user)
     return me.data.user
   } catch (err) {}
 }
@@ -45,8 +48,8 @@ export async function getMessagesByTask(task) {
     const messages = await API.get(`/tasks/${task}/messages`)
     return messages
   } catch (err) {
-    console.log(err.response.status)
-    console.log(err.response.data)
+    //console.log(err.response.status)
+   // console.log(err.response.data)
     return false
   }
 }
@@ -72,14 +75,14 @@ export async function login(username, password) {
     if(response == undefined){
       return false
     } else if (response.status == 200) {
-      console.log(response.data.token)
+      //console.log(response.data.token)
       setToken(response.data.token)
-
+     setValues('token', response.data.token)
       return true
     }
 
   } catch (err) {
-    console.log(err)
+   // console.log(err)
   }
 }
 
