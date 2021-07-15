@@ -1,19 +1,20 @@
-//import { StatusBar } from 'expo-status-bar';
+
 import React, {useEffect, useState, useContext} from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import Header from '../components/header'
 import TaskItem from '../components/taskItem'
 import TaskDetail from '../components/TaskDetail'
 import {MyContext} from '../storage/context'
+
   
   export default function Tasks(props) {    
-    const [task, setTask] = useState(null)
     const [activeTask, setActiveTask] = useState(null)
+
+    const { task } = useContext(MyContext)
     const {getTask} = useContext(MyContext)
 
     const run = async () => {
-      const task = await getTask()
-      setTask(task.data.tasks)  
+     await getTask()
      }
   
     useEffect(() =>{ 
