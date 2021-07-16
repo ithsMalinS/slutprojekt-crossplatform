@@ -1,4 +1,4 @@
-//import { StatusBar } from 'expo-status-bar';
+
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import  Swipeable  from 'react-native-gesture-handler/Swipeable';
@@ -12,7 +12,7 @@ export default function TaskItem(props) {
   const doneTextColor = '#cfcfcf'
 
   const setStatus = () => {
-    console.log('heheheh')
+  
   }
 
   const checkDone = () => {
@@ -24,7 +24,7 @@ export default function TaskItem(props) {
   }
 
   useEffect(() =>{ 
-    checkDone()     
+    checkDone()    
   },[])
 
   return (

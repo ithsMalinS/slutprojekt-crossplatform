@@ -7,6 +7,11 @@ const MyContext = React.createContext()
 const StateProvider = (props) => {
 
 const [user, setUser] = useState(null)
+const [task, setTask] = useState(null)
+
+
+
+
 
   const logIn = async (username, password) => {
     const test = await API.login(username, password)
@@ -16,13 +21,13 @@ const [user, setUser] = useState(null)
 
   const getMe = async () => {
     const me = await API.getMe()
-    console.log(me)
     setUser(me)
     return me
   }
 
   const getTask = async () => {
     const task = await API.getTasks()
+    setTask(task) 
     return task
   }
   const getTaskById = async (id) => {
@@ -67,7 +72,9 @@ const [user, setUser] = useState(null)
         postMessage,
         createNewTask,
         logOut,
-        user
+        user,
+        task,
+       // activeTask
       }}
     >
       {props.children}

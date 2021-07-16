@@ -1,4 +1,4 @@
-//import { StatusBar } from 'expo-status-bar';
+
 import React, {useEffect, useState, useContext} from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import MessageItem from '../components/messageItem'

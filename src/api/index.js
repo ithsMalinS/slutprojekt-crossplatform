@@ -11,11 +11,11 @@ export function setToken(token) {
 
 
 
-//verkar inte användas
-export async function fetchTasks() {
-  const tasks = await API.get("/tasks")
-  return tasks.tasks
-}
+
+// export async function fetchTasks() {
+//   const tasks = await API.get("/tasks")
+//   return tasks.tasks
+// }
 
 export async function getMe() {
   try {
@@ -27,7 +27,8 @@ export async function getMe() {
 
 export async function getTasks() {
   const tasks = await API.get("/tasks")
-  return tasks
+  
+  return tasks.data.tasks
 }
 
 export async function getTasksById(id) {
@@ -48,8 +49,7 @@ export async function getMessagesByTask(task) {
     const messages = await API.get(`/tasks/${task}/messages`)
     return messages
   } catch (err) {
-    console.log(err.response.status)
-    console.log(err.response.data)
+   
     return false
   }
 }
@@ -75,23 +75,22 @@ export async function login(username, password) {
     if(response == undefined){
       return false
     } else if (response.status == 200) {
-      console.log(response.data.token)
+      
       setToken(response.data.token)
      setValues('token', response.data.token)
       return true
     }
 
   } catch (err) {
-    console.log(err)
+   
   }
 }
 
 export async function logOut() {
   try {
-    //setToken(null)
-   // const token = API.defaults.headers.common["Authorization"]
+    
    delete API.defaults.headers.common["Authorization"]
 
-    //return token
+    
   } catch (err) {}
 }

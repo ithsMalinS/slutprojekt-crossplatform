@@ -1,6 +1,6 @@
-//import { StatusBar } from 'expo-status-bar';
+
 import React from 'react';
-import { StyleSheet, Text, Pressable} from 'react-native';
+import { Text, Pressable} from 'react-native';
 import ButtonStyle from '../style/styling'
 
 export default function Button({title, onPress}) {
