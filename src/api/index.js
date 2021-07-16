@@ -43,6 +43,13 @@ export async function createNewTask(clientId, message) {
   })
   return task
 }
+export async function TaskDone(taskId, body) {
+  const task = await API.patch(`/tasks/${id}`, {
+    description: message,
+    CustomerID: clientId,
+  })
+  return task
+}
 
 export async function getMessagesByTask(task) {
   try {
