@@ -11,6 +11,7 @@ import {MyContext} from '../storage/context'
     const [activeTask, setActiveTask] = useState(null)
 
     const { task } = useContext(MyContext)
+    const { user } = useContext(MyContext)
     const {getTask} = useContext(MyContext)
 
     const run = async () => {
@@ -19,12 +20,7 @@ import {MyContext} from '../storage/context'
   
     useEffect(() =>{ 
       run()      
-    },[])
-
-
-     /* const handlePress = () => {
-        props.navigation.navigate('Create task')
-     } */
+    }, [user])
 
     
   const renderItem = ({ item }) => (
@@ -36,7 +32,6 @@ import {MyContext} from '../storage/context'
   return (
     <View style={styles.container}>
       <Header navigation={props.navigation} />
-      {/* <Button title='Create Task' onPress={handlePress} /> */}
       <Text style={styles.heading}>Your tasks</Text> 
       { task && <FlatList
         keyExtractor={item => String(item.id)}
