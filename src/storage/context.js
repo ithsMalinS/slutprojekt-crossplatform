@@ -8,9 +8,7 @@ const StateProvider = (props) => {
 
 const [user, setUser] = useState(null)
 const [task, setTask] = useState(null)
-
-
-
+const [messages, setMessages] = useState(null)
 
 
   const logIn = async (username, password) => {
@@ -36,8 +34,9 @@ const [task, setTask] = useState(null)
   }
 
   const getMessagesByTask = async (task) => {
-    const messages = await API.getMessagesByTask(task)
-    return messages
+    const taskMessages = await API.getMessagesByTask(task)
+    setMessages(taskMessages)
+    return taskMessages
   }
 
   const postImage = async (task, formData) => {
@@ -74,6 +73,7 @@ const [task, setTask] = useState(null)
         logOut,
         user,
         task,
+        messages,
        // activeTask
       }}
     >

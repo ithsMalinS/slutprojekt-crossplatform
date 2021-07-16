@@ -11,7 +11,7 @@ export default function MessageForm(props) {
   const { postMessage } = useContext(MyContext)
 
   const sendMessage = async () => {
-    const newMesssage = await postMessage(props.task, message).then(setMessage(''))
+    await postMessage(props.task, message).then(setMessage(''))
     await props.getMessages()
     Keyboard.dismiss()
   }
