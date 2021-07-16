@@ -1,29 +1,26 @@
-//import { StatusBar } from 'expo-status-bar';
+
 import React, {useEffect, useState, useContext} from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import Header from '../components/header'
 import TaskItem from '../components/taskItem'
 import TaskDetail from '../components/TaskDetail'
 import {MyContext} from '../storage/context'
+
   
   export default function Tasks(props) {    
-    const [task, setTask] = useState(null)
     const [activeTask, setActiveTask] = useState(null)
+
+    const { task } = useContext(MyContext)
+    const { user } = useContext(MyContext)
     const {getTask} = useContext(MyContext)
 
     const run = async () => {
-      const task = await getTask()
-      setTask(task.data.tasks)  
+     await getTask()
      }
   
     useEffect(() =>{ 
       run()      
-    },[])
-
-
-     /* const handlePress = () => {
-        props.navigation.navigate('Create task')
-     } */
+    }, [user])
 
     
   const renderItem = ({ item }) => (
@@ -35,7 +32,6 @@ import {MyContext} from '../storage/context'
   return (
     <View style={styles.container}>
       <Header navigation={props.navigation} />
-      {/* <Button title='Create Task' onPress={handlePress} /> */}
       <Text style={styles.heading}>Your tasks</Text> 
       { task && <FlatList
         keyExtractor={item => String(item.id)}

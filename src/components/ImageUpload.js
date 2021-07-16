@@ -27,7 +27,7 @@ export default function TaskInfo(props) {
   }
 
   const uploadImage = async () => {
-    console.log('steg1');
+    
     const formData = new FormData()
     formData.append('pic',{
       name: 'kalleMoreus.jpg',
