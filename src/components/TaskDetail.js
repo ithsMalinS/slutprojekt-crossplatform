@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useContext, useState, useEffect} from "react"
 import {
   StyleSheet,
   Image,
@@ -10,13 +10,27 @@ import {
 } from "react-native"
 import Messages from "./messages"
 import checkImg from "../assets/check.png"
+import {MyContext} from '../storage/context'
 
 export default function TaskDetail(props) {
 
+  const { user } = useContext(MyContext)
+  const [status, setStatus] = useState('active')
+
+  
 
   const markDone = () => {
     console.log("done")
   }
+
+
+  useEffect(() => {
+    if(props.task.done == 0){
+      setStatus('active')
+    } else {
+      setStatus('done')
+    }
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -27,10 +41,12 @@ export default function TaskDetail(props) {
         <TouchableOpacity style={styles.close} onPress={props.closeTask}>
           <Text style={styles.closeText}>X</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={markDone}>
-          <Image  source={checkImg} style={styles.checkImg} />
-          </TouchableOpacity>
+        {user.role == 'worker' && (<TouchableOpacity onPress={markDone}>
+          <Text>Mark as done</Text>
+          {/* <Image  source={checkImg} style={styles.checkImg} /> */}
+          </TouchableOpacity>)}
         <Text style={styles.heading}>Task ID: {props.task.id}</Text>
+        <Text>Status: {status}</Text>
         {/* <Text>Task ID: {props.task.id}</Text> */}
         <Text style={styles.description}>
           Description: {props.task.description}
