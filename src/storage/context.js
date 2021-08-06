@@ -33,6 +33,12 @@ const [messages, setMessages] = useState(null)
     return task
   }
 
+  const editTaskById = async (id) => {
+    const task = await API.editTaskById(id)
+    getTask()
+    return task
+  }
+
   const getMessagesByTask = async (task) => {
     const taskMessages = await API.getMessagesByTask(task)
     setMessages(taskMessages)
@@ -66,6 +72,7 @@ const [messages, setMessages] = useState(null)
         getMe,
         getTask,
         getTaskById,
+        editTaskById,
         getMessagesByTask,
         postImage,
         postMessage,

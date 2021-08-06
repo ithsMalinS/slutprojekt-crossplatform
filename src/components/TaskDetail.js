@@ -15,12 +15,15 @@ import {MyContext} from '../storage/context'
 export default function TaskDetail(props) {
 
   const { user } = useContext(MyContext)
+  const { editTaskById } = useContext(MyContext)
   const [status, setStatus] = useState('active')
 
   
 
   const markDone = () => {
     console.log("done")
+    editTaskById(props.task.id)
+    props.closeTask()
   }
 
 
@@ -41,7 +44,7 @@ export default function TaskDetail(props) {
         <TouchableOpacity style={styles.close} onPress={props.closeTask}>
           <Text style={styles.closeText}>X</Text>
         </TouchableOpacity>
-        {user.role == 'worker' && (<TouchableOpacity onPress={markDone}>
+        {user.role == 'worker' && status == 'active' && (<TouchableOpacity onPress={markDone}>
           <Text>Mark as done</Text>
           {/* <Image  source={checkImg} style={styles.checkImg} /> */}
           </TouchableOpacity>)}

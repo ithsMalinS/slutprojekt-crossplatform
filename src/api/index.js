@@ -44,6 +44,13 @@ export async function createNewTask(clientId, message) {
   return task
 }
 
+export async function editTaskById(id) {
+  await API.patch(`/tasks/${id}`, {
+    done: true
+  })
+  return true
+}
+
 export async function getMessagesByTask(task) {
   try {
     const messages = await API.get(`/tasks/${task}/messages`)

@@ -23,7 +23,7 @@ export default function TaskItem(props) {
 
   useEffect(() => {
     checkDone()
-  }, [])
+  }, [props.task])
 
   return (
     // <Swipeable
