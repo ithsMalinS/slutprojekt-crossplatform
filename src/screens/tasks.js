@@ -11,7 +11,6 @@ import {MyContext} from '../storage/context'
     const [activeTask, setActiveTask] = useState(null)
 
     const { task } = useContext(MyContext)
-    const { user } = useContext(MyContext)
     const {getTask} = useContext(MyContext)
 
     const run = async () => {
@@ -20,7 +19,7 @@ import {MyContext} from '../storage/context'
   
     useEffect(() =>{ 
       run()      
-    }, [user])
+    }, [task])
 
     
   const renderItem = ({ item }) => (
