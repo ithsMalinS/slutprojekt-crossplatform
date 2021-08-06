@@ -10,6 +10,7 @@ import {MyContext} from '../storage/context'
   export default function Tasks(props) {    
     const [activeTask, setActiveTask] = useState(null)
 
+    const { user } = useContext(MyContext)
     const { task } = useContext(MyContext)
     const {getTask} = useContext(MyContext)
 
@@ -19,7 +20,7 @@ import {MyContext} from '../storage/context'
   
     useEffect(() =>{ 
       run()      
-    }, [task])
+    }, [user])
 
     
   const renderItem = ({ item }) => (

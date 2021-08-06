@@ -21,22 +21,23 @@ export default function TaskInfo(props) {
   }
 
 
-  const malin = async () => {
+  const openCamera = async () => {
     const result = await ImagePicker.launchCameraAsync({})
     setImage(result)
   }
 
   const uploadImage = async () => {
-    
+    console.log('click')
     const formData = new FormData()
     formData.append('pic',{
-      name: 'kalleMoreus.jpg',
+      name: 'image.jpg',
       type: 'image/*',
       uri: Platform.OS === 'android' ? image.uri : image.uri.replace('file://','')
     })
 
-    const response = await postImage(1,formData)
+    const response = await postImage(props.task.id,formData)
     setUploadedImage(true)  
+    console.log('laadddar')
   }
 
 
@@ -45,19 +46,23 @@ export default function TaskInfo(props) {
 
   return (
     <View style={styles.container}>
-      <Text>Jag är en imagepicker</Text>
-
-      <Pressable style={styles.knapp} onPress={malin}>
+      <Text>Add a new image</Text>
+      
+      <Pressable style={styles.knapp} onPress={openCamera}>
         <Text style={styles.textis}>Open Camera</Text>
       </Pressable>
+
+
+      {image && <Pressable style={styles.knapp}>
+              <Text onPress={uploadImage} style={styles.textis}>Ladda upp</Text>
+            </Pressable>
+            }
+      
       <Pressable style={styles.knapp} onPress={pickImage}>
         <Text style={styles.textis}>Open ImageFolder</Text>
       </Pressable >
-      {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
-      {image && <Pressable onPress={uploadImage} style={styles.knapp}>
-        <Text style={styles.textis}>Kalle </Text>
-      </Pressable>
-      }
+      {image && <Image source={{ uri: image.uri }} style={{ width: 100, height: 100 }} />}
+      
       {uploadedImage && <Text>Uppladdad!</Text>}
 
     </View>

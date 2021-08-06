@@ -3,7 +3,7 @@ import { StyleSheet, Text, View} from "react-native"
 
 import Header from "../components/header"
 import { MyContext } from "../storage/context"
-import ImageUpload from "../components/ImageUpload"
+
 import Button from "../components/button"
 import { removeKey } from "../storage/expoStorage"
 import Swipeable from "react-native-gesture-handler/Swipeable"
@@ -60,8 +60,6 @@ setTheme(theme)
       >
         <Text onPress={()=> swapTheme('pink')} style={styles.light}>Välj ljust tema till din fina profilsida</Text>
       </Swipeable>
-
-      <ImageUpload />
         <Button title="Log out" onPress={signOut}></Button>
     </View>
   )
