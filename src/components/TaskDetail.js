@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native"
 import Messages from "./messages"
-import checkImg from "../assets/check.png"
+import ImageUpload from "../components/ImageUpload"
 import {MyContext} from '../storage/context'
 
 export default function TaskDetail(props) {
@@ -49,11 +49,18 @@ export default function TaskDetail(props) {
           {/* <Image  source={checkImg} style={styles.checkImg} /> */}
           </TouchableOpacity>)}
         <Text style={styles.heading}>Task ID: {props.task.id}</Text>
+        
+        {props.task.imageFile == null && (<ImageUpload task={props.task} />)}
+        
         <Text>Status: {status}</Text>
         {/* <Text>Task ID: {props.task.id}</Text> */}
         <Text style={styles.description}>
           Description: {props.task.description}
         </Text>
+        
+        {props.task.imageFile !== null && (
+          <Image source={{ uri: props.task.imageFile }} style={{ width: 200, height: 200 }} />
+        )}
         <Messages task={props.task.id} />
       </KeyboardAvoidingView>
     </View>

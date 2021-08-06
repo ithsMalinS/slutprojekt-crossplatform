@@ -10,8 +10,8 @@ import {MyContext} from '../storage/context'
   export default function Tasks(props) {    
     const [activeTask, setActiveTask] = useState(null)
 
-    const { task } = useContext(MyContext)
     const { user } = useContext(MyContext)
+    const { task } = useContext(MyContext)
     const {getTask} = useContext(MyContext)
 
     const run = async () => {
