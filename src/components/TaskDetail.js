@@ -21,7 +21,6 @@ export default function TaskDetail(props) {
   
 
   const markDone = () => {
-    console.log("done")
     editTaskById(props.task.id)
     props.closeTask()
   }
@@ -89,7 +88,6 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     bottom: 0,
-    // backgroundColor: 'white',
     backgroundColor: "rgba(0,0,0,0.5)",
     padding: 50,
   },

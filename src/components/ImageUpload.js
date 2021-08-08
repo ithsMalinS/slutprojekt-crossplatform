@@ -27,7 +27,6 @@ export default function TaskInfo(props) {
   }
 
   const uploadImage = async () => {
-    console.log('click')
     const formData = new FormData()
     formData.append('pic',{
       name: 'image.jpg',
@@ -37,7 +36,6 @@ export default function TaskInfo(props) {
 
     const response = await postImage(props.task.id,formData)
     setUploadedImage(true)  
-    console.log('laadddar')
   }
 
 

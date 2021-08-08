@@ -1,34 +1,23 @@
-//import * as React from "react"
 import * as SecureStore from "expo-secure-store"
-
 
 export async function setValues(key, value) {
   const storeValue = await getValueFor(key)
   if (!storeValue) {
-    
-
     await SecureStore.setItemAsync(key, value)
   } else {
-    
   }
 }
 
 export async function getValueFor(key) {
   let result = await SecureStore.getItemAsync(key)
-  
-  if (result) {
-    //alert(`Token: ${result}`)
 
+  if (result) {
     return result
   } else {
-   // alert("No token stored")
     return false
   }
 }
 
-
 export async function removeKey(key) {
   await SecureStore.deleteItemAsync(key)
-  
-
 }
