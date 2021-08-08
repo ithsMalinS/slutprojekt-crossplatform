@@ -19,10 +19,6 @@ export default function Home(props) {
     await getMe()
   }
 
-  const setStatus = () => {
-    console.log("done")
-  }
-
   useEffect(() => {
     run()
   }, [])
@@ -52,7 +48,7 @@ setTheme(theme)
       <Text>Swipea för att kolla vilket tema som är nice</Text>
       <Swipeable
         renderRightActions={() => (
-          <View style={styles.optionsView} onPress={setStatus}>
+          <View style={styles.optionsView}>
             <Text onPress={()=>swapTheme('darkgrey')} style={styles.dark}>Välj mörkt tema till din fina profilsida</Text>
           </View>
         

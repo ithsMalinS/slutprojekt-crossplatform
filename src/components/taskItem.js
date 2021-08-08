@@ -9,10 +9,6 @@ export default function TaskItem(props) {
   const doneBackgroundColor = "#999797"
   const doneTextColor = "#cfcfcf"
 
-  // const setStatus = () => {
-  //   console.log("done")
-  // }
-
   const checkDone = () => {
     if (props.task.done == true) {
       setDone(true)
@@ -26,34 +22,21 @@ export default function TaskItem(props) {
   }, [props.task])
 
   return (
-    // <Swipeable
-    //   renderRightActions={() => (
-    //     <View style={styles.optionsView} onPress={setStatus}>
-    //       <Image source={checkImg} style={styles.checkImg} />
-    //     </View>
-    //   )}
-    // >
-      <View
-        style={[
-          styles.container,
-          { backgroundColor: done ? doneBackgroundColor : todoBackgroundColor },
-        ]}
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: done ? doneBackgroundColor : todoBackgroundColor },
+      ]}
+    >
+      <Text style={[styles.taskId, { color: done ? doneTextColor : "white" }]}>
+        Task ID: {props.task.id}
+      </Text>
+      <Text
+        style={[styles.description, { color: done ? doneTextColor : "white" }]}
       >
-        <Text
-          style={[styles.taskId, { color: done ? doneTextColor : "white" }]}
-        >
-          Task ID: {props.task.id}
-        </Text>
-        <Text
-          style={[
-            styles.description,
-            { color: done ? doneTextColor : "white" },
-          ]}
-        >
-          {props.task.description}
-        </Text>
-      </View>
-    // </Swipeable>
+        {props.task.description}
+      </Text>
+    </View>
   )
 }
 
@@ -65,7 +48,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     padding: 10,
     paddingHorizontal: 90,
-    // borderRadius: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
