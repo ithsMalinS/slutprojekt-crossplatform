@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from "react"
+import React, { useContext, useState, useEffect } from "react"
 import {
   StyleSheet,
   Image,
@@ -10,27 +10,23 @@ import {
 } from "react-native"
 import Messages from "./messages"
 import ImageUpload from "../components/ImageUpload"
-import {MyContext} from '../storage/context'
+import { MyContext } from "../storage/context"
 
 export default function TaskDetail(props) {
-
   const { user } = useContext(MyContext)
   const { editTaskById } = useContext(MyContext)
-  const [status, setStatus] = useState('active')
-
-  
+  const [status, setStatus] = useState("active")
 
   const markDone = () => {
     editTaskById(props.task.id)
     props.closeTask()
   }
 
-
   useEffect(() => {
-    if(props.task.done == 0){
-      setStatus('active')
+    if (props.task.done == 0) {
+      setStatus("active")
     } else {
-      setStatus('done')
+      setStatus("done")
     }
   }, [])
 
@@ -43,22 +39,26 @@ export default function TaskDetail(props) {
         <TouchableOpacity style={styles.close} onPress={props.closeTask}>
           <Text style={styles.closeText}>X</Text>
         </TouchableOpacity>
-        {user.role == 'worker' && status == 'active' && (<TouchableOpacity onPress={markDone}>
-          <Text>Mark as done</Text>
-          {/* <Image  source={checkImg} style={styles.checkImg} /> */}
-          </TouchableOpacity>)}
+        {user.role == "worker" && status == "active" && (
+          <TouchableOpacity onPress={markDone}>
+            <Text>Mark as done</Text>
+          </TouchableOpacity>
+        )}
         <Text style={styles.heading}>Task ID: {props.task.id}</Text>
-        
-        {props.task.imageFile == null && (<ImageUpload task={props.task} />)}
-        
+
+        {props.task.imageFile == null && <ImageUpload task={props.task} />}
+
         <Text>Status: {status}</Text>
-        {/* <Text>Task ID: {props.task.id}</Text> */}
+
         <Text style={styles.description}>
           Description: {props.task.description}
         </Text>
-        
+
         {props.task.imageFile !== null && (
-          <Image source={{ uri: props.task.imageFile }} style={{ width: 200, height: 200 }} />
+          <Image
+            source={{ uri: props.task.imageFile }}
+            style={{ width: 200, height: 200 }}
+          />
         )}
         <Messages task={props.task.id} />
       </KeyboardAvoidingView>

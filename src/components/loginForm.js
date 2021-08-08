@@ -1,6 +1,6 @@
 
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Keyboard } from 'react-native';
 import { MyContext } from '../storage/context'
 import LogStyle from '../style/styling'
 import Button from '../components/button'

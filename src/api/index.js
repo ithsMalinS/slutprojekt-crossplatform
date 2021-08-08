@@ -9,14 +9,6 @@ export function setToken(token) {
   API.defaults.headers.common["Authorization"] = token
 }
 
-
-
-
-// export async function fetchTasks() {
-//   const tasks = await API.get("/tasks")
-//   return tasks.tasks
-// }
-
 export async function getMe() {
   try {
     const me = await API.get("/me")
