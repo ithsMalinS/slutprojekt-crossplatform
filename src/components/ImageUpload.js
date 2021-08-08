@@ -34,7 +34,7 @@ export default function TaskInfo(props) {
       uri: Platform.OS === 'android' ? image.uri : image.uri.replace('file://','')
     })
 
-    const response = await postImage(props.task.id,formData)
+    await postImage(props.task.id,formData)
     setUploadedImage(true)  
   }
 

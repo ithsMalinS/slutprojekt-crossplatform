@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { StyleSheet, Text, View, Image } from "react-native"
-import Swipeable from "react-native-gesture-handler/Swipeable"
-import checkImg from "../assets/check.png"
+import { StyleSheet, Text, View } from "react-native"
 
 export default function TaskItem(props) {
   const [done, setDone] = useState(null)

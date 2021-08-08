@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, Pressable, Keyboard, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, View, TextInput, Pressable, Keyboard, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import { MyContext } from '../storage/context'
 
 import Logo from '../assets/right-arrow.png'
