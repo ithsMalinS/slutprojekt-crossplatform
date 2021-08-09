@@ -56,7 +56,7 @@ export default function TaskDetail(props) {
 
         {props.task.imageFile !== null && (
           <Image
-            source={{ uri: props.task.imageFile }}
+            source={{ uri: `http://10.0.2.2:8080/uploads/${props.task.imageFile}` }}
             style={{ width: 200, height: 200 }}
           />
         )}
